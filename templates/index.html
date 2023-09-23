@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Word Counter</title>
+</head>
+
+<body>
+    <div class="container">    
+        <div class="sub-title">
+            <h1>Word Counter</h1>
+        </div>
+        
+        <div class="form">
+            <form action="/" method="post"> 
+                {% csrf_token %}  {# Adding CSRF token for security #}
+                <textarea id="wordInput" name="word_count" placeholder="Word Count" rows="20"></textarea><br>
+                <input type="submit" value="Count">
+            </form>
+        </div>
+        
+        <div class="word-text">
+          {# Display messages if any #}
+          {% for message in messages %}
+              <h2><span>{{message}}</span></h2>
+          {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
